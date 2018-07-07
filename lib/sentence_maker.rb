@@ -103,11 +103,3 @@ def choose_adverbs(adverbs, num)
 	end
 	return adv
 end
-
-def run
-	for i in 0..10
-		puts make_sentence
-	end
-end
-
-run
