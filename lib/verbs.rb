@@ -367,6 +367,7 @@ def fill_verbs
 		"gild",
 		"give",
 		"glide",
+		"glomp",
 		"glue",
 		"gnaw",
 		"go",

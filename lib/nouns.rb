@@ -1255,7 +1255,7 @@ def fill_nouns
 		"drive",
 		"green",
 		"support",
-		"glad",
+		"gland",
 		"remove",
 		"return",
 		"run",
