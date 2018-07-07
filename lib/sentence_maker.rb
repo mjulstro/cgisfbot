@@ -1,6 +1,8 @@
+require_relative 'adjectives.rb'
+
 def make_sentence
 	articles = ["a", "the", "my", "your"]
-	adjectives = ["big", "small"]
+	adj = adjectives
 	nouns = ["cat", "dog"]
 	verbs = ["eats", "plays", "runs"]
 	adverbs = ["loudly", "happily"]
