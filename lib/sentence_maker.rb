@@ -17,7 +17,7 @@ class SentenceMaker
 		@plural = false
 		subj = make_compound_subject(@adj, @nouns, @prefixes)
 		pred = make_compound_predicate(@adverbs, @v)
-		return punctuate("#{subj}#{pred}")
+		return punctuate("#{subj} #{pred}")
 	end
 
 	def punctuate(sentence)
@@ -36,9 +36,9 @@ class SentenceMaker
 	def make_subject(adjectives, nouns, prefixes)
 		decider = rand(2)
 		if decider == 1 then
-			subject = choose_adjectives(adjectives, 2) + " #{nouns.sample} "
+			subject = choose_adjectives(adjectives) + " #{nouns.sample}"
 		else
-			subject = "#{nouns.sample} "
+			subject = "#{nouns.sample}"
 		end
 		subject = "#{prefixes.sample} " + subject
 		return subject
@@ -53,9 +53,9 @@ class SentenceMaker
 
 		decider = rand(2)
 		if decider == 1 then
-			predicate = "#{v}" + choose_adverbs(adverbs, 2)
+			predicate = "#{v}" + choose_adverbs(adverbs)
 		else
-			predicate = "#{v} "
+			predicate = "#{v}"
 		end
 		return predicate
 	end
@@ -73,7 +73,7 @@ class SentenceMaker
 	def make_compound_subject(adjectives, nouns, prefixes)
 		decider = rand(4)
 		if decider == 1 then
-			subject = make_compound_subject(adjectives, nouns, prefixes) + "and " + make_compound_subject(adjectives, nouns, prefixes)
+			subject = make_compound_subject(adjectives, nouns, prefixes) + " and " + make_compound_subject(adjectives, nouns, prefixes)
 			@plural = true
 		else
 			subject = make_subject(adjectives, nouns, prefixes)
@@ -84,7 +84,7 @@ class SentenceMaker
 	def make_compound_predicate(adverbs, verbs)
 		decider = rand(4)
 		if decider == 1 then
-			predicate = make_compound_predicate(adverbs, verbs) + "and " + make_compound_predicate(adverbs, verbs)
+			predicate = make_compound_predicate(adverbs, verbs) + " and " + make_compound_predicate(adverbs, verbs)
 		else
 			predicate = make_predicate(adverbs, verbs)
 		end
@@ -92,20 +92,20 @@ class SentenceMaker
 		return predicate
 	end
 
-	def choose_adjectives(adjectives, num)
-		decider = rand(num)
+	def choose_adjectives(adjectives)
+		decider = rand(4)
 		if decider == 1 then
-			adj = choose_adjectives(adjectives, num + 1) + ", " + choose_adjectives(adjectives, num + 1)
+			adj = choose_adjectives(adjectives) + ", " + choose_adjectives(adjectives)
 		else
 			adj = "#{adjectives.sample}"
 		end
 		return adj
 	end
 
-	def choose_adverbs(adverbs, num)
-		decider = rand(num)
+	def choose_adverbs(adverbs)
+		decider = rand(4)
 		if decider == 1 then
-			adv = choose_adverbs(adverbs, num + 1) + "," + choose_adverbs(adverbs, num + 1)
+			adv = choose_adverbs(adverbs) + "," + choose_adverbs(adverbs)
 		else
 			adv = " #{adverbs.sample}"
 		end
