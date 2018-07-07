@@ -1,4 +1,4 @@
-def adjectives
+def fill_adjectives
 	adj = ["abandoned",
 	 "able",
 	 "absolute",
