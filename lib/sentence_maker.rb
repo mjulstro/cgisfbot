@@ -2,6 +2,7 @@ require_relative 'verbs.rb'
 require_relative 'adjectives.rb'
 require_relative 'adverbs.rb'
 require_relative 'nouns.rb'
+require_relative 'conjunctions.rb'
 
 class SentenceMaker
 
@@ -11,13 +12,28 @@ class SentenceMaker
 		@nouns = fill_nouns
 		@v = fill_verbs
 		@adverbs = fill_adverbs
+		@conj = fill_conjunctions
 	end
 
 	def make_sentence
+		punctuate(configure_sentence)
+	end
+
+	def configure_sentence
+		decider = rand(6)
+		if decider == 1 then
+			sentence = configure_sentence + " #{@conj.sample}, " + configure_sentence
+		else
+			sentence = make_clause
+		end
+		return sentence
+	end
+
+	def make_clause
 		@plural = false
 		subj = make_compound_subject(@adj, @nouns, @prefixes)
 		pred = make_compound_predicate(@adverbs, @v)
-		return punctuate("#{subj} #{pred}")
+		return "#{subj} #{pred}"
 	end
 
 	def punctuate(sentence)
@@ -34,7 +50,7 @@ class SentenceMaker
 	end
 
 	def make_subject(adjectives, nouns, prefixes)
-		decider = rand(2)
+		decider = rand(4)
 		if decider == 1 then
 			subject = choose_adjectives(adjectives) + " #{nouns.sample}"
 		else
@@ -51,7 +67,7 @@ class SentenceMaker
 			v = verbs.sample
 		end
 
-		decider = rand(2)
+		decider = rand(4)
 		if decider == 1 then
 			predicate = "#{v}" + choose_adverbs(adverbs)
 		else
@@ -63,8 +79,6 @@ class SentenceMaker
 	def make_present_tense(verb)
 		if verb.end_with?("s") or verb.end_with?("h") then
 			verb = "#{verb}es"
-		elsif verb.end_with?("y") then
-			verb = verb.chomp("y") + "ies"
 		else 
 			verb = "#{verb}s"
 		end
