@@ -22,7 +22,7 @@ class SentenceMaker
 	def configure_sentence
 		decider = rand(6)
 		if decider == 1 then
-			sentence = configure_sentence + " #{@conj.sample}, " + configure_sentence
+			sentence = configure_sentence + ", #{@conj.sample} " + configure_sentence
 		else
 			sentence = make_clause
 		end
