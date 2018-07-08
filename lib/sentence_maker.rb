@@ -61,7 +61,7 @@ class SentenceMaker
 			subject = "#{nouns.sample}"
 		end
 
-		decider = rand(4)
+		decider = rand(10)
 		if subject == "you" then
 			#do nothing
 		elsif decider != 1 then
