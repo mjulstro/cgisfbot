@@ -25,6 +25,8 @@ class SentenceMaker
 		decider = rand(6)
 		if decider == 1 then
 			sentence = configure_sentence + ", #{@conj.sample} " + configure_sentence
+		elsif decider == 2 then
+			sentence = configure_sentence + "; " + configure_sentence
 		else
 			sentence = make_clause
 		end
@@ -59,7 +61,19 @@ class SentenceMaker
 			subject = "#{nouns.sample}"
 		end
 
-		subject = "#{prefixes.sample} " + subject + make_prepositional_phrases
+		decider = rand(4)
+		if subject == "you" then
+			#do nothing
+		elsif decider != 1 then
+			prefix = prefixes.sample
+			if prefix == "a" and subject.start_with?("a", "e", "i", "o", "u") then
+				subject = "an " + subject
+			else
+				subject = "#{prefix} " + subject
+			end
+		end
+
+		subject = subject + make_prepositional_phrases
 		return subject
 	end
 

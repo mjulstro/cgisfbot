@@ -67,7 +67,6 @@ def fill_prepositions
 		"than",
 		"through",
 		"throughout",
-		"till",
 		"times",
 		"to",
 		"toward",
