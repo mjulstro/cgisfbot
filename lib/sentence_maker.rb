@@ -3,6 +3,7 @@ require_relative 'adjectives.rb'
 require_relative 'adverbs.rb'
 require_relative 'nouns.rb'
 require_relative 'conjunctions.rb'
+require_relative 'prepositions.rb'
 
 class SentenceMaker
 
@@ -13,6 +14,7 @@ class SentenceMaker
 		@v = fill_verbs
 		@adverbs = fill_adverbs
 		@conj = fill_conjunctions
+		@prepositions = fill_prepositions
 	end
 
 	def make_sentence
@@ -56,8 +58,21 @@ class SentenceMaker
 		else
 			subject = "#{nouns.sample}"
 		end
-		subject = "#{prefixes.sample} " + subject
+
+		subject = "#{prefixes.sample} " + subject + make_prepositional_phrases
 		return subject
+	end
+
+	def make_prepositional_phrases
+		decider = rand(4)
+		if decider == 1 then
+			prep = make_prepositional_phrases + "" + make_prepositional_phrases
+		elsif decider == 2
+			prep = " #{@prepositions.sample} " + make_subject(@adj, @nouns, @prefixes)
+		else
+			prep = ""
+		end
+		return prep
 	end
 
 	def make_predicate(adverbs, verbs)
@@ -73,7 +88,7 @@ class SentenceMaker
 		else
 			predicate = "#{v}"
 		end
-		return predicate
+		return predicate + make_prepositional_phrases
 	end
 
 	def make_present_tense(verb)
