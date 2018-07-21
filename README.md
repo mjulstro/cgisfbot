@@ -17,7 +17,8 @@ Syntactic todos:
 Non-syntactic todos:
   - running from a remote server all the time, instead of from my computer when I remember to start the bot up
   - answering asks
-  - when answering asks, looking up new words in a dictionary (dictionary.com, maybe?) and adding them to the word lists
+    - when answering asks, looking up new words in a dictionary (dictionary.com, maybe?) and adding them to the word lists
+    - when answering asks, using words from the ask in the response
 
 
 
