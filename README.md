@@ -12,6 +12,7 @@ Syntactic todos:
   - verbs that are phrases ("puts out", "eats up", "doubles down", "gets nerfed")
   - helping verbs
   - the passive voice?
+  - handling irregular verbs ("buy" is still "buys," but "try" should become "tries" instead of "trys")
   
 Non-syntactic todos:
   - running from a remote server all the time, instead of from my computer when I remember to start the bot up
