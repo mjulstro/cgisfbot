@@ -3,7 +3,7 @@ This is a Tumblr bot that produces random sentences. The goal is to be grammatic
 
 Currently, the bot only produces present-tense sentences, because I didn't want to try to code conjugation.
 Potential future todos include:
-  Syntactic todos:
+Syntactic todos:
   - interjections
   - past and future tenses (and participles?!)
   - plural nouns and the verbs that conjugate for them
@@ -11,7 +11,7 @@ Potential future todos include:
   - verbs that are phrases ("puts out", "eats up", "doubles down", "gets nerfed")
   - helping verbs
   - the passive voice?
-  Non-syntactic todos:
+Non-syntactic todos:
   - running from a remote server all the time, instead of from my computer when I remember to start the bot up
   - answering asks
   - when answering asks, looking up new words in a dictionary (dictionary.com, maybe?) and adding them to the word lists
