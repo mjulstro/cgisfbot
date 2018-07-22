@@ -1269,7 +1269,6 @@ def fill_nouns
 		"pitch",
 		"remote",
 		"treat",
-		"vast",
 		"deposit",
 		"print",
 		"sleep",
