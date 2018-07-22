@@ -21,8 +21,8 @@ class ImpulsiveSentenceMaker
 	end
 
 	def make_sentence
-		@plural = false
 		@complete_clause = false
+		@plural = false
 		sentence = start_sentence()
 
 		while @last_word != "punctuation"
@@ -91,11 +91,13 @@ class ImpulsiveSentenceMaker
 	end
 
 	def follow_noun(prev)
-		@complete_clause = false
 		decider = rand(4)
 		if decider == 0 then
 			@last_word = "conjunction"
 			return prev + " #{@conjunctions.sample}"
+		elsif decider == 1 then
+			@last_word = "preposition"
+			return prev + " #{@prepositions.sample}"
 		else
 			@last_word = "verb"
 			@complete_clause = true
@@ -115,6 +117,9 @@ class ImpulsiveSentenceMaker
 		elsif decider == 1 then
 			@last_word = "conjunction"
 			return prev + " #{@conjunctions.sample}"
+		elsif decider == 2 then
+			@last_word = "preposition"
+			return prev + " #{@prepositions.sample}"
 		else
 			@last_word = "punctuation"
 			return prev.capitalize + "#{["?", "!", "."].sample}"
@@ -148,7 +153,7 @@ class ImpulsiveSentenceMaker
 				if @plural == true then
 					return prev + " #{@verbs.sample}"
 				else
-					return prev + " #{@verbs.sample}s"
+					return prev + " " + make_present_tense(@verbs.sample)
 				end
 			else
 				@complete_clause = false
