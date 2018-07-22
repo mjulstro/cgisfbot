@@ -1,11 +1,16 @@
 require_relative '../lib/tumblr_connection.rb'
 
+meaninglessbot = Meaninglessbot.new
+impulsivebot = Impulsivebot.new
+
 while (true)
-	post_to_impulsivebot
+	impulsivebot.post
 	puts "Posted to impulsivebot!"
-	slep 600
+	sleep 600
 	
-	post_to_meaninglessbot
+	meaninglessbot.post
 	puts "Posted to meaninglessbot!"
+	meaninglessbot.answer_asks
+	puts "Answered meaninglessbot's asks!"
 	sleep 600
 end

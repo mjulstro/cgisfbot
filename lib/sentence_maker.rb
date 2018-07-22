@@ -155,4 +155,80 @@ class SentenceMaker
 		return adv
 	end
 
+	def make_response(question)
+		words = question.downcase.split(" ")
+		pref = []
+		adj = []
+		nouns = []
+		verbs = []
+		adv = []
+		conj = []
+		prep = []
+
+		words.each do |word|
+			if @prefixes.include?(word) then
+				pref.push(word)
+			elsif @adj.include?(word) then
+				adj.push(word)
+			elsif @nouns.include?(word) then
+				nouns.push(word)
+			elsif @v.include?(word) then
+				verbs.push(word)
+			elsif @adverbs.include?(word) then
+				adv.push(word)
+			elsif @conj.include?(word) then
+				conj.push(word)
+			elsif @prepositions.include?(word) then
+				prep.push(word)
+			end
+		end
+
+		if pref.empty? then
+			pref = @prefixes
+		end
+		if adj.empty? then
+			adj = @adj
+		end
+		if nouns.empty? then
+			nouns = @nouns
+		end
+		if verbs.empty? then
+			verbs = @v
+		end
+		if adv.empty? then
+			adv = @adverbs
+		end
+		if conj.empty? then
+			conj = @conj
+		end
+		if prep.empty? then
+			prep = @prepositions
+		end
+
+		return make_ask_sentence(pref, adj, nouns, verbs, adv, conj, prep)
+	end
+
+	def make_ask_sentence(pref, adj, nouns, verbs, adv, conj, prep)
+		punctuate(configure_ask_sentence(pref, adj, nouns, verbs, adv, conj, prep))
+	end
+
+	def configure_ask_sentence(pref, adj, nouns, verbs, adv, conj, prep)
+		decider = rand(6)
+		if decider == 1 then
+			sentence = configure_sentence + ", #{conj.sample} " + configure_sentence
+		elsif decider == 2 then
+			sentence = configure_sentence + "; " + configure_sentence
+		else
+			sentence = make_ask_clause(pref, adj, nouns, verbs, adv, conj, prep)
+		end
+		return sentence
+	end
+
+	def make_ask_clause(pref, adj, nouns, verbs, adv, conj, prep)
+		@plural = false
+		subj = make_compound_subject(adj, nouns, pref)
+		pred = make_compound_predicate(adv, verbs)
+		return "#{subj} #{pred}"
+	end
+
 end

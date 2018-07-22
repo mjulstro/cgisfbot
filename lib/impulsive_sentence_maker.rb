@@ -116,7 +116,7 @@ class ImpulsiveSentenceMaker
 			return prev + " #{@adverbs.sample}"
 		elsif decider == 1 then
 			@last_word = "conjunction"
-			return prev + " #{@conjunctions.sample}"
+			return prev + ", #{@conjunctions.sample}"
 		elsif decider == 2 then
 			@last_word = "preposition"
 			return prev + " #{@prepositions.sample}"
@@ -133,7 +133,7 @@ class ImpulsiveSentenceMaker
 			return prev + ", #{@adverbs.sample}"
 		elsif decider == 1 then
 			@last_word = "conjunction"
-			return prev + " #{@conjunctions.sample}"
+			return prev + ", #{@conjunctions.sample}"
 		else
 			@last_word = "punctuation"
 			return prev.capitalize + "#{["?", "!", "."].sample}"
