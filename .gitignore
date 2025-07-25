@@ -1,7 +1,28 @@
 # Java
 
-/java/.idea/
-/java/out
+/sonnetbot-java/.gradle
+/sonnetbot-java/build/
+/sonnetbot-java/!gradle/wrapper/gradle-wrapper.jar
+/sonnetbot-java/!**/src/main/**/build/
+/sonnetbot-java/!**/src/test/**/build/
+/sonnetbot-java/gradle/
+/sonnetbot-java/gradlew
+/sonnetbot-java/gradlew.bat
+
+### IntelliJ IDEA ###
+/sonnetbot-java/.idea/.gitignore
+/sonnetbot-java/.idea/modules.xml
+/sonnetbot-java/.idea/jarRepositories.xml
+/sonnetbot-java/.idea/compiler.xml
+/sonnetbot-java/.idea/libraries/
+/sonnetbot-java/*.iws
+/sonnetbot-java/*.iml
+/sonnetbot-java/*.ipr
+/sonnetbot-java/out/
+/sonnetbot-java/!**/src/main/**/out/
+/sonnetbot-java/!**/src/test/**/out/
+
+
 
 
 
